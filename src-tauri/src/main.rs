@@ -3,8 +3,7 @@
 mod database; 
 
 use database::create_schema;
-use std::result::Result;
-use sqlx::{sqlite::SqliteQueryResult, Sqlite, SqlitePool, migrate::MigrateDatabase};
+use sqlx::{ Sqlite, SqlitePool, migrate::MigrateDatabase};
 #[tokio::main]
 async fn main() {
    
@@ -18,10 +17,9 @@ async fn main() {
    }
    let instances = SqlitePool::connect(&db_url).await.unwrap(); 
    let qry = "INSERT INTO settings (description) VALUES($1)";
-   let result = sqlx::query(&qry).bind("testing").execute(&instances).await;
+  // let result = sqlx::query(&qry).bind("testing").execute(&instances).await;
 
    instances.close().await;
-   println!("{:?}", result);
 
 tauri::Builder::default()
    .run(tauri::generate_context!())
