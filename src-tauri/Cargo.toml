@@ -23,3 +23,7 @@ serde = { version = "1.0", features = ["derive"] }
 log = "0.4"
 tauri = { version = "2.0.2", features = [] }
 tauri-plugin-log = "2.0.0-rc"
+tokio = { version = "1", features = ["full"] }
+sqlx = { version = "0.5.9", features = ["runtime-tokio-rustls", "sqlite"] }
+async-std = { version = "1.6", features = ["attributes"] }
+futures = "0.3.18"
